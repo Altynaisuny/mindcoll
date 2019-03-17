@@ -1,4 +1,4 @@
-package com.hundsun.operation.manager;
+package com.sunyt.mindcoll;
 
 public class FinalExame {
     public static void main(String[] args) {
