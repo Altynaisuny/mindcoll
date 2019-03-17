@@ -1,4 +1,4 @@
-package com.hundsun.operation.manager;
+package com.sunyt.mindcoll;
 
 import java.util.ArrayList;
 import java.util.HashMap;
