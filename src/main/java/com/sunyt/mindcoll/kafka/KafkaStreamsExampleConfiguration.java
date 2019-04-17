@@ -7,8 +7,6 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.kafka.support.serializer.JsonSerde;
 
-@Configuration
-@EnableKafkaStreams
 public class KafkaStreamsExampleConfiguration {
 
 /*    @Bean
