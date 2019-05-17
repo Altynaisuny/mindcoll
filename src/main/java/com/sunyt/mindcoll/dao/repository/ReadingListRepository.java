@@ -1,12 +1,10 @@
-package com.sunyt.mindcoll.dao;
+package com.sunyt.mindcoll.dao.repository;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
-import com.sunyt.mindcoll.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ReadingListRepository extends JpaRepository<Book, ID> {
+public interface ReadingListRepository extends JpaRepository<Book, Long> {
     /**
      * read all by
      * @param reader

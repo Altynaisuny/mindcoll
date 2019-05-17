@@ -1,4 +1,4 @@
-package com.sunyt.mindcoll.redis;
+package com.sunyt.mindcoll.model;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import redis.clients.jedis.JedisPoolConfig;
 /**
  * redis配置类
  */
-public class RedisConfig {
+public class RedisModel {
     private String host;
     private int port;
     private int timeout;//秒

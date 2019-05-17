@@ -1,0 +1,35 @@
+server:
+  port:
+    8085
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/hs_base?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-active: 20
+      initial-size: 1
+      min-idle: 3
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+    hikari:
+      read-only:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+#shiro
+shiro:
+  enabled: true
+  loginUrl: /login.json
+  successUrl: /success.json
+  unauthorizedUrl: /unPermission
+  sessionManager:
+    sessionIdCookieEnabled: true
+    sessionIdUrlRewritingEnabled: false

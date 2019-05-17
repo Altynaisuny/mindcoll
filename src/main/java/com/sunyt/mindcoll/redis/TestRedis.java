@@ -1,6 +1,5 @@
 package com.sunyt.mindcoll.redis;
 
-import com.sunyt.mindcoll.model.MyBean;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -24,7 +23,6 @@ public class TestRedis {
         jedis.auth("redis123");
         //存储成key-value型的数据
         jedis.set("","");
-        MyBean myBean = new MyBean();
         //查看是否存储完毕
         System.out.println(jedis.get(""));
         //连接池不用关闭，只关闭资源。

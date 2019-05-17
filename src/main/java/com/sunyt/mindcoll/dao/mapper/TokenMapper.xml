@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.sunyt.mindcoll.dao.mapper.TokenMapper" xmlns="http://mybatis.org/schema/mybatis-mapper">
+    <update id="updateUserToken" parameterType="com.sunyt.mindcoll.model.TokenModel">
+        update `user`
+        <set>
+            <if test="token != null">token = #{token},</if>
+            <if test="createTime != null">createTime = #{createTime},</if>
+            <if test="expireTime != null">expireTime = #{expireTime}</if>
+        </set>
+        <where>
+            id = #{id}
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+        </where>
+    </update>
+</mapper>
