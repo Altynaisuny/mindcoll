@@ -41,7 +41,7 @@ public class CustomRealm extends AuthorizingRealm {
         String username = (String) token.getPrincipal();
         List<User> userList = userRepository.findByUsername(username);
         if (CollectionUtils.isEmpty(userList)){
-            throw new UnknownAccountException();
+            throw new UnknownAccountException("用户不存在");
         }
         User user = userList.get(0);
         // principal credentials realmName

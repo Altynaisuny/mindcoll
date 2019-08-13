@@ -2,6 +2,9 @@ package com.sunyt.mindcoll.controller;
 
 import com.sunyt.mindcoll.dao.repository.UserRepository;
 import com.sunyt.mindcoll.model.User;
+import com.sunyt.mindcoll.service.ThreadTest;
+import com.sunyt.mindcoll.service.ThreadTestUtils;
+import com.sunyt.mindcoll.util.GlobalResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -23,6 +26,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    ThreadTestUtils threadTestUtils;
+
     @RequestMapping(value = "/user/userList", method = RequestMethod.GET)
     public Model getUserListByNameAndPass(@PathVariable("username") String username, Model model){
         List<User> userList = userRepository.findByUsername(username);
@@ -35,9 +41,19 @@ public class UserController {
         return model;
     }
     @RequestMapping(value = "/test/test", method = RequestMethod.POST)
-    public User getUserListByNameAndPass1(@RequestBody User user){
-        Subject subject = SecurityUtils.getSubject();
-        System.out.println(subject.getPrincipal());
-        return user;
+    public String getUserListByNameAndPass1(@RequestBody User user){
+        try {
+            Subject subject = SecurityUtils.getSubject();
+            return "success";
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return "error";
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public String getUserListEe(@RequestBody User user){
+        threadTestUtils.getExecutorService().execute(new ThreadTest(""));
+        return "error";
     }
 }

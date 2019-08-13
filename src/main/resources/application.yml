@@ -3,6 +3,8 @@ server:
     8085
   servlet:
     context-path: /
+  error:
+    path: /error
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/hs_base?useUnicode=true&characterEncoding=utf-8
@@ -33,3 +35,6 @@ shiro:
   sessionManager:
     sessionIdCookieEnabled: true
     sessionIdUrlRewritingEnabled: false
+
+Thread:
+  corePoolSize:1

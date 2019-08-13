@@ -2,9 +2,9 @@ package com.sunyt.mindcoll.util;
 
 public class GlobalResponse<T> {
 
-    public static final String SUCCESS = "1";
+    private static final String SUCCESS = "1";
 
-    public static final String FAIL = "0";
+    private static final String FAIL = "0";
     /**
      * 返回代码：1-成功 0-失败
      */
@@ -22,29 +22,38 @@ public class GlobalResponse<T> {
 
     }
 
-    public GlobalResponse(String code){
+    private GlobalResponse(String code){
         this.code = code;
     }
 
-    private GlobalResponse(T data, String code){
+    private GlobalResponse(String code, T data){
         this.code = code;
         this.data = data;
     }
 
-    private GlobalResponse(String message, String code){
+    private GlobalResponse(String code, String message){
         this.code = code;
         this.message = message;
     }
 
+    private GlobalResponse(String code, String message, T data){
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
     public static <T> GlobalResponse<T> success(T data){
-        return new GlobalResponse<>(data, GlobalResponse.SUCCESS);
+        return new GlobalResponse<>(GlobalResponse.SUCCESS, data);
     }
     public static <T> GlobalResponse<T> success(){
         return new GlobalResponse<>(GlobalResponse.SUCCESS);
     }
 
     public static <T> GlobalResponse<T> fail(String message){
-        return new GlobalResponse<>(message, GlobalResponse.FAIL);
+        return new GlobalResponse<>(GlobalResponse.FAIL, message);
+    }
+    public static <T> GlobalResponse<T> fail(String message, T data){
+        return new GlobalResponse<>(GlobalResponse.FAIL, message, data);
     }
 
     public static String getSUCCESS() {

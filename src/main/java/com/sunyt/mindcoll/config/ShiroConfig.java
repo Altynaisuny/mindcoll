@@ -46,9 +46,21 @@ public class ShiroConfig {
     @Bean
     protected SessionManager sessionManager(){
         DefaultWebSessionManager webSessionManager = new DefaultWebSessionManager();
-        webSessionManager.setGlobalSessionTimeout(20000);
+        //过期时间（毫秒）
+        webSessionManager.setGlobalSessionTimeout(18000000);
+        //相隔多久检查session的有效性
+        webSessionManager.setSessionValidationInterval(1800000);
         SimpleCookie simpleCookie = new SimpleCookie();
+        //设置Cookie名字
         simpleCookie.setName("token");
+        //设置Cookie的域名
+        simpleCookie.setDomain("");
+        //设置Cookie的过期时间，秒为单位，默认-1表示关闭浏览器时过期Cookie；
+        simpleCookie.setMaxAge(3600);
+        //如果设置为true，则客户端不会暴露给客户端脚本代码
+        simpleCookie.setHttpOnly(true);
+        //设置Cookie的路径，默认空，即存储在域名根下；
+        simpleCookie.setPath("");
         webSessionManager.setSessionIdCookie(simpleCookie);
         return webSessionManager;
     }

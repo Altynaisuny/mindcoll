@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,10 +72,9 @@ public class LoginController {
         try {
             subject.login(userPassToken);
         }catch (Exception e){
-            e.printStackTrace();
+            return GlobalResponse.fail(e.getMessage());
         }
-
-        return GlobalResponse.success("login successfully");
+        return GlobalResponse.success(subject + "login successfully");
     }
 
     /**
@@ -100,5 +100,12 @@ public class LoginController {
 
         return user;
     }
+
+    @RequestMapping("/guest/test")
+    public void getModelTest(HttpServletRequest request){
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        String username = request.getParameter("username");
+    }
+
 
 }
